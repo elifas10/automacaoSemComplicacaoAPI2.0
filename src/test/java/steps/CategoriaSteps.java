@@ -20,4 +20,8 @@ public class CategoriaSteps {
         RestUtils.get(header, "categorias");
     }
 
+    @Dado("que altere o campo {string} para {string} do header de Categoria")
+    public void queAltereOCampoParaDoHeaderDeCategoria(String key, String value) {
+        header.put(key, value);
+    }
 }
