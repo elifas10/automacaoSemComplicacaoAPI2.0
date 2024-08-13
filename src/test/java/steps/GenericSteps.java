@@ -1,7 +1,12 @@
 package steps;
 
+import io.cucumber.java.es.E;
+import org.junit.Assert;
+import utils.RestUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 import io.cucumber.java.pt.Entao;
-import org.testng.Assert;
 import utils.RestUtils;
 
 public class GenericSteps {
@@ -14,5 +19,14 @@ public class GenericSteps {
     @Entao("valido que no campo {string} possui o valor {string}")
     public void validoQueNoCampoPossuiOValor(String key, String value) {
         Assert.assertEquals(value, RestUtils.getResponse().jsonPath().get(key));
+    }
+    @E("valido que no campo {string} possui o valor {int}")
+    public void validoQueNoCampoPossuiOValor(String key, Integer value) {
+        Assert.assertEquals(value, RestUtils.getResponse().jsonPath().get(key));
+    }
+
+    @E("valido que recebo uma lista vazia no response")
+    public void validoQueReceboUmaListaVaziaNoResponse() {
+        Assert.assertEquals(new ArrayList<>(0), RestUtils.getResponse().jsonPath().get());
     }
 }
